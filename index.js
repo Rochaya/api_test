@@ -54,15 +54,5 @@ const searchVelib = () => {
     searchVelibStation(city);
 }
 
-fetch('https://opendata.paris.fr/api/records/1.0/search/?dataset=velib-disponibilite-en-temps-reel&q=&rows=10&facet=name&facet=is_installed&facet=is_renting&facet=is_returning&facet=nom_arrondissement_communes')
-    .then(response => response.json())
-    .then(data => {
-        allVelibData = data.records;
-        searchVelibStation("");
-    })
-    .catch(error => {
-        console.log(error);
-    });
-
 document.getElementById('btn').addEventListener('click', searchVelib);
 setInterval(() => searchVelibStation(""), 60000);
